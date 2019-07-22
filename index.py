@@ -9,18 +9,18 @@ app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        # if we press the turn on button
+        # If "Turn On" button is pressed
         if request.form['submit'] == 'Turn On':
             arduino.write(b"led_on")
-            response = arduino.readline().decode('utf-8')
-            print(response)
-
-        # if we press the turn off button
+        # If "Turn Off" button is pressed
         elif request.form['submit'] == 'Turn Off':
             arduino.write(b"led_off")
-            response = arduino.readline().decode('utf-8')
-            print(response)
 
+        # Send message to arduino and wait for response
+        response = arduino.readline().decode('utf-8')
+        print(response)
+        
+    # Send message to arduino asking about sensor status and wait for response    
     arduino.write(b"get")
     data = arduino.readline().decode('utf-8')
     return render_template("home.html", sensor_value=data)
