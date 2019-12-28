@@ -1,5 +1,5 @@
-# SmallStepForMan
+# small-step-for-man
 
-This small project uses an Arduino that reports on values on a sensor connected to it.
+Small project using an Arduino to report on status of a connected sensor.
 
-The arduino communicates with a Flask web application in order to display the status of the sensor and to allow the client to control an LED connected to the Arduino.
+The Arduino communicates with a Flask web application to display sensor information and to allow control of an LED connected to the Arduino
